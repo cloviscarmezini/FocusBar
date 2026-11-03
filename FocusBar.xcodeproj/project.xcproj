@@ -11,12 +11,33 @@
     ],
   },
   "files": [
-    { "kind": "folder", "path": "FocusBar", "target-membership": [ "FocusBar" ] },
+    {
+      "kind": "folder",
+      "path": "FocusBar",
+      "target-membership": [
+        "FocusBar",
+      ],
+      "membership-exceptions": [
+        {
+          "build-phase": "FocusBar/copy/Copy Files",
+          "inclusions": [
+            "com.focusbar.helper.plist",
+          ],
+        }, {
+          "target": "FocusBarHelper",
+          "inclusions": [
+            "FocusBarXPCProtocol.swift",
+          ],
+        },
+      ],
+    },
+    { "kind": "folder", "path": "FocusBarHelper", "target-membership": [ "FocusBarHelper" ] },
     {
       "kind": "group",
       "name": "Products",
       "children": [
         { "path": "<PRODUCTS>/FocusBar.app", "id": "7572FA0D3098FAC9000C2A1F", "type": "wrapper.application", "index": false },
+        { "path": "<PRODUCTS>/FocusBarHelper", "id": "7572FA3630990BA6000C2A1F", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "FocusBar/copy/Copy Files (1 item)", "code-sign-on-copy": true } ] },
       ],
     },
   ],
@@ -30,6 +51,16 @@
         "compile-sources",
         "frameworks",
         "resources",
+        {
+          "kind": "copy",
+          "name": "Copy Files (1 item)",
+          "bundle-base-path": "executables-directory",
+        }, {
+          "kind": "copy",
+          "name": "Copy Files",
+          "bundle-base-path": "root",
+          "relative-path": "Contents/Library/LaunchDaemons",
+        },
       ],
       "build-settings": {
         "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon",
@@ -37,10 +68,11 @@
         "CODE_SIGN_STYLE": "Automatic",
         "COMBINE_HIDPI_IMAGES": "YES",
         "CURRENT_PROJECT_VERSION": "1",
-        "ENABLE_APP_SANDBOX": "YES",
+        "ENABLE_APP_SANDBOX": "NO",
         "ENABLE_PREVIEWS": "YES",
-        "ENABLE_USER_SELECTED_FILES": "readonly",
         "GENERATE_INFOPLIST_FILE": "YES",
+        "INFOPLIST_KEY_LSUIElement": "YES",
+        "INFOPLIST_KEY_NSAppleEventsUsageDescription": "O FocusBar precisa de permissão para ler a URL atual e bloquear sites nos seus navegadores.",
         "INFOPLIST_KEY_NSHumanReadableCopyright": "",
         "LD_RUNPATH_SEARCH_PATHS": [
           "$(inherited)",
@@ -54,6 +86,28 @@
         "SWIFT_APPROACHABLE_CONCURRENCY": "YES",
         "SWIFT_DEFAULT_ACTOR_ISOLATION": "MainActor",
         "SWIFT_EMIT_LOC_STRINGS": "YES",
+        "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
+        "SWIFT_VERSION": "5.0",
+      },
+    }, {
+      "name": "FocusBarHelper",
+      "id": "7572FA3530990BA6000C2A1F",
+      "product": "Products/FocusBarHelper",
+      "product-type": "tool",
+      "build-phases": [
+        "compile-sources",
+        "frameworks",
+        {
+          "kind": "copy",
+          "name": "Copy Files",
+          "relative-path": "/usr/share/man/man1/",
+          "scope": "install",
+        },
+      ],
+      "build-settings": {
+        "CODE_SIGN_STYLE": "Automatic",
+        "PRODUCT_NAME": "$(TARGET_NAME)",
+        "SWIFT_APPROACHABLE_CONCURRENCY": "YES",
         "SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY": "YES",
         "SWIFT_VERSION": "5.0",
       },

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ambiente Restrito</title>
+    <style>
+        :root {
+            --bg-gradient-1: #e0e0e0;
+            --bg-gradient-2: #f5f5f7;
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --text-main: #1d1d1f;
+            --text-sub: #515154;
+            --accent: #007aff;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-gradient-1: #09090b;
+                --bg-gradient-2: #1c1c1e;
+                --card-bg: rgba(30, 30, 30, 0.65);
+                --card-border: rgba(255, 255, 255, 0.1);
+                --text-main: #f5f5f7;
+                --text-sub: #98989d;
+                --accent: #0a84ff;
+                --shadow: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--text-main);
+            background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-1));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--card-border);
+            padding: 50px 60px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow);
+            text-align: center;
+            max-width: 420px;
+            animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon-container {
+            margin-bottom: 24px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(128, 128, 128, 0.1);
+            color: var(--text-main);
+        }
+
+        .icon-container svg {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.08); opacity: 1; stroke: var(--accent); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--text-sub);
+            margin: 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <div class="icon-container">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+        </div>
+        <h1>Foco Protegido</h1>
+        <p>Este ambiente foi restrito intencionalmente pelo FocusBar. Mantenha a concentração.</p>
+    </div>
+</body>
+</html>
