@@ -11,6 +11,7 @@
     ],
   },
   "files": [
+    { "path": "README.md", "target-membership": [ "FocusBar/resources" ] },
     {
       "kind": "folder",
       "path": "FocusBar",
