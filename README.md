@@ -1,5 +1,7 @@
 # FocusBar 🎈
 
+<img width="2912" height="1440" alt="focusbar-cover" src="https://github.com/user-attachments/assets/17e290ff-4b32-4cfa-914e-35c305d37300" />
+
 O **FocusBar** é um aplicativo nativo para macOS desenhado para maximizar a produtividade e eliminar distrações digitais. Operando diretamente na barra de menus, ele combina bloqueio de rede em nível de sistema (`/etc/hosts`) com monitoramento inteligente de navegadores para garantir sessões de hiperfoco sem interrupções.
 
 ## ✨ Funcionalidades Principais
